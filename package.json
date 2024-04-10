@@ -1,0 +1,20 @@
+{
+  "name": "node_js_auth_from_scratch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "cd ./back-end && npm install",
+    "install": "cd ./front-end && npm install",
+    "start": "npx concurrently 'npm run start:back-end' 'npm run start:front-end'",
+    "start:back-end": "npm --prefix ./back-end start",
+    "start:front-end": "npm --prefix ./front-end start",
+    "start:dev": "npx concurrently \"npm run start:dev --prefix ./back-end\" \"npm start --prefix ./front-end\" "
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  }
+}
