@@ -1,9 +1,9 @@
 const knex = require("../db/connection");
 
-function read(logindata) {
+function read(email) {
   return knex("user")
     .select("*")
-    .where({ email: logindata.email, password: logindata.password })
+    .where({ email: email})
     .first();
 }
 
