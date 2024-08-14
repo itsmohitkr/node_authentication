@@ -5,6 +5,8 @@ const cookieParser = require("cookie-parser");
 const signupRouter = require("./signup/signup.router");
 const loginRouter = require("./login/login.router");
 const verifyRouter = require("./verify/verify.router");
+const forgotPasswordRouter = require("./forgotPassword/forgotPassword.router");
+const resetPasswordRouter = require("./resetPassword/resetPassword.router");
 const { restrictToLoggedinUserOnly } = require("./middleware/auth");
 
 // Middleware
@@ -25,7 +27,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
 app.use("/verify-token", verifyRouter);
-
+app.use("/forgot-password", forgotPasswordRouter);
+app.use("/reset-password", resetPasswordRouter);
 
 app.post("/logout", (req, res) => {
   res.clearCookie("token"); 

@@ -6,14 +6,14 @@ async function create(req, res, next) {
   const { full_name, email, password } = req.body.data;
 
   if (full_name === "" || email === "" || password === "") {
-    next({
+    return next({
       ststus: 400,
       message: "Kindly fill all the input field.",
     });
   }
   const user = await service.read(email);
   if (user) {
-    next({
+    return next({
       status: 400,
       message: "User already exist. try login",
     });
@@ -25,7 +25,7 @@ async function create(req, res, next) {
 
   const userData = await service.create(full_name, email, hashedPassword);
   res.status(201).json({ data: userData });
-}
+} 
 
 module.exports = {
   create,
