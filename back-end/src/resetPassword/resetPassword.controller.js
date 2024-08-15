@@ -8,7 +8,6 @@ async function resetPassword(req, res) {
     const { token } = req.query;
     const { newPassword } = req.body.data;
       
-    
     if (!token) {
       return res.status(400).json({ message: "Reset token is required" });
     }
