@@ -27,8 +27,8 @@ async function resetPassword(req, res) {
 
     // Update the user's password in the database
     await service.update(user.user_id, hashedPassword);
-
-    res.json({ message: "Password successfully reset" });
+    res.clearCookie("token"); 
+    res.json({ message: "Password successfully reset. Please Login to view resources." });
   } catch (error) {
     console.error("Error resetting password:", error);
     res.status(500).json({ message: "Internal server error" });
