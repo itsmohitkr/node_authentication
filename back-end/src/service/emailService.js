@@ -1,7 +1,5 @@
 require("dotenv").config();
 const nodemailer = require("nodemailer");
-console.log("Email Username:", process.env.EMAIL_USERNAME);
-console.log("Email Password:", process.env.EMAIL_PASSWORD);
 const transporter = nodemailer.createTransport({
     
     
@@ -13,7 +11,6 @@ service: "gmail",
 });
 
 function sendResetEmail(email, resetToken) {
-  console.log("called");
 
   const resetLink = `http://localhost:5001/reset-password?token=${resetToken}`;
 
