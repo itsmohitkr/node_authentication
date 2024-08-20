@@ -11,14 +11,14 @@ const { restrictToLoggedinUserOnly } = require("./middleware/auth");
 
 // Middleware
 
-app.use(cookieParser());
-app.use(express.json());
 app.use(
   cors({
     credentials: true,
     origin: "https://resturant-reservatation.onrender.com",
   })
 );
+app.use(cookieParser());
+app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
 
