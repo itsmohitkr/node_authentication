@@ -6,8 +6,8 @@ function setUser(user) {
   const payload = {
     id: user.user_id,
     email: user.email,
+    full_name: user.full_name,
   };
-
   // lets put a stamp on token and return to the user
   return jwt.sign(payload, secretKey);
 }
