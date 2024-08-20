@@ -13,21 +13,14 @@ const { restrictToLoggedinUserOnly } = require("./middleware/auth");
 
 app.use(
   cors({
-    credentials: true,
-    origin: (origin, callback) => {
-      console.log("Origin:", origin);
-      const allowedOrigins = [
-        "https://resturant-reservatation.onrender.com",
-        "https://resturant-reservatation-system.onrender.com",
-        "http://localhost:3000",
-      ];
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        console.log("Blocked by CORS");
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: [
+      "https://resturant-reservatation.onrender.com",
+      "https://resturant-reservatation-system.onrender.com",
+      "http://localhost:3000",
+    ],
+    credentials: true, // Allow credentials (cookies)
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 app.use(cookieParser());
