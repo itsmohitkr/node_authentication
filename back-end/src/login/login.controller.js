@@ -39,7 +39,11 @@ async function login(req, res, next) {
     }
 
     const token = setUser(user);
-    res.cookie("token", token);
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production", // Set to true in production
+      sameSite: "None", // Required for cross-origin cookies
+    });
     console.log(`user: ${user.full_name} logged in`);
 
     res.json({ data: user });
