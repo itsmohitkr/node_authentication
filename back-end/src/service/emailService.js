@@ -12,7 +12,7 @@ service: "gmail",
 
 function sendResetEmail(email, resetToken) {
 
-  const resetLink = `http://localhost:5001/reset-password?token=${resetToken}`;
+  const resetLink = `${process.env.CLIENT_FRONTEND_URL}/auth/reset-password/${resetToken}`;
 
   const mailOptions = {
     from: process.env.EMAIL_USERNAME, // Sender address
